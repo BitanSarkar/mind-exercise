@@ -1,3 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@1,500&display=swap');
+
 .App {
-  background-color: bisque;
+  background-color: rgb(224, 197, 164);
+}
+.textBox {
+  display: inline-flex;
+}
+.OTD {
+  text-align: center;
+}
+.date {
+  font-size: 60px;
+}
+.datee {
+  padding-top: 100px;
+  padding-bottom: 200px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+.btn-group {
+  width: 80%;
+  margin: auto;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 24px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.btn-group button {
+  width: 40%;
+  background-color: #d63fa4b2; /* Green background */
+  border: 1px solid rgb(79, 84, 131); /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  font-size: 28px;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #46a804;
+}
+
+.correct {
+  color: rgb(0, 187, 40);
+  font-size: 60px;
+}
+.wrong {
+  color: rgb(255, 0, 0);
+  font-size: 60px;
+}
+
+.btn-retry {
+  margin-top: 48px;
+  padding: 30px;
+  border-radius: 30px;
+  background-color: rgb(85, 85, 255);
+  color: aliceblue;
+  width: 30%;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 24px;
+}
+
+
+.btn-retry:hover {
+  margin-top: 48px;
+  border-radius: 30px;
+  background-color: rgb(23, 23, 255);
+  color: aliceblue;
+  width: 30%;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  font-size: 24px;
 }
