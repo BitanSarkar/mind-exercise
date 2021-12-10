@@ -1,7 +1,7 @@
 export const days = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 export const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 export const monthsDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-export const cumMonth = [0,+3,+3,-1,+1,-3,-1,+2,-2,0,+3,-2];
+export const cumMonth = [0, 3, 3, 6, 8, 11, 13, 16, 19, 21, 24, 26, 29];
 export const randomInRange = (min, max) => {
     [min, max] = (min>max)?[max,min]:[min,max];
     return min+Math.floor((max-min)*Math.random());
@@ -38,10 +38,11 @@ export const isLeapYear = (x) => {
 export const noOfLeap = (x) => {
     return (Math.floor(x/4)+Math.floor(x/400)-Math.floor(x/100))%7;
 }
-export const dateCalc = ({day, month, year}) => {
-    day = parseInt(day);
-    month = parseInt(month);
-    year = parseInt(year);
+export const dateCalc = (date) => {
+    console.log(date);
+    const day = parseInt(date.day);
+    const month = parseInt(date.month);
+    const year = parseInt(date.year);
     console.log(((year-1)%7 + noOfLeap(year-1) + cumMonth[month-1] + day + ((isLeapYear(year) && month>2) ? 1 : 0))%7);
     return days[((year-1)%7 + noOfLeap(year-1) + cumMonth[month-1] + day + ((isLeapYear(year) && month>2) ? 1 : 0))%7];
 }
