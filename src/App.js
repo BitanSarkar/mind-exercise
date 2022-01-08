@@ -4,6 +4,7 @@ import CountDownStart from './components/CountDown';
 import Timer from './components/Timer';
 import { dateCalc, days, getRandomDate, months} from './utility';
 import useWindowDimensions from './WindowDim';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -70,7 +71,7 @@ function App() {
     <div className="App">
       {height>=width?<h1>Mobile view not supported! Please rotate your phone!</h1>:
       <div className="textBox">
-        <div className="OTD" style={{width:Math.floor(width/2)+"px"}}>
+        <div className="OTD" style={{width:Math.floor(width/2)+"px" , height:(height-20)+"px"}}>
           <h1>Find the Day from the Date</h1>
           {(!isActive)?<CountDownStart ctrDwn={ctrDwn}/>:
           <div className="datee">
@@ -84,14 +85,30 @@ function App() {
               {corrDay===subDay?<div className="correct">Correct!!<br/>The day is indeed {corrDay}</div>:<div className="wrong">Wrong!!! <br/> The day is {corrDay}, <br/> You selected {subDay}</div>}
               <button onClick={handleReset} className="btn-retry">RETRY</button>
             </>:
-            <div class="btn-group" style={{width:(height>width)?"100%":"80%"}}>
-              {days.map(d => <button onClick={()=>handleSubmit(d)} style={{fontSize:(height<500)?"10px":"28px"}}>{d}</button>)}
-            </div>}
-            
+            <>
+            {days.map( d=> 
+              <>
+                <div class="btn-group" style={{width:(height>width)?"100%":"80%"}}>
+                  <div className="row" style={{width:(height>width)?"100%":"80%"}}>
+                    {
+                      d.map(D => 
+                      <>
+                        {D==="Saturday"?<div className="col-3"></div>:null}
+                        <div className={"col-6"} style={{width:"50%"}}>
+                          <button onClick={()=>handleSubmit(D)} style={{fontSize:(height<500)?"10px":"28px", width:(height<width)?"180px":"210px"}}>{D}</button>
+                        </div>
+                        {D==="Saturday"?<div className="col-3"></div>:null}
+                      </>)
+                    }
+                  </div>
+                </div>
+              </>
+            )}
+            </>}
           </div>}
         </div>
         <div>
-          <iframe title="Events on this day" src={"https://www.onthisday.com/events/"+months[date.month===0?10:date.month-1]+"/"+(date.day===0?25:date.day)} style={{width:Math.floor(width/2)+"px", height:((height<500)?2*height:height)-5+"px", borderWidth:"0px", overflow:"hidden"}}></iframe>
+          <iframe title="Events on this day" src={"https://www.onthisday.com/events/"+months[date.month===0?10:date.month-1]+"/"+(date.day===0?25:date.day)} style={{width:Math.floor(width/2)+"px", height:((height<500)?2*height:height)-20+"px", borderWidth:"0px", overflow:"hidden"}}></iframe>
         </div>
       </div>}
     </div>
